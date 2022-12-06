@@ -14,6 +14,493 @@ soong_namespace {
     ],
 }
 
+// System library
+cc_prebuilt_library_shared {
+    name: "vendor.dolby.hardware.dms@2.0-system",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/vendor.dolby.hardware.dms@2.0.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    system_ext_specific: true,
+}
+
+// Vendor service
+cc_prebuilt_binary {
+    name: "vendor.dolby.hardware.dms@2.0-service",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libhidlbase",
+                "libdapparamstorage",
+                "libdlbdsservice",
+                "vendor.dolby.hardware.dms@2.0",
+                "vendor.dolby.hardware.dms@2.0-impl",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+// Service init RC file
+prebuilt_etc {
+    name: "vendor.dolby.hardware.dms@2.0-service.rc",
+    owner: "xiaomi",
+    src: "proprietary/vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc",
+    sub_dir: "init",
+    soc_specific: true,
+}
+
+// 32-bit vendor libraries
+cc_prebuilt_library_shared {
+    name: "libdapparamstorage",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libdapparamstorage.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libdeccfg",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libdeccfg.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libqtigef",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libqtigef.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefright_soft_ac4dec",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libstagefright_soft_ac4dec.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefright_soft_ddpdec",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libstagefright_soft_ddpdec.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefrightdolby",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libstagefrightdolby.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.dolby.hardware.dms@2.0-vendor",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.dolby.hardware.dms@2.0.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+// 32-bit soundfx libraries
+cc_prebuilt_library_shared {
+    name: "libeffectproxy",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/soundfx/libeffectproxy.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libhwdap",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/soundfx/libhwdap.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libswdap",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/soundfx/libswdap.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libswgamedap",
+    owner: "xiaomi",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/soundfx/libswgamedap.so",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+// 64-bit vendor libraries
+cc_prebuilt_library_shared {
+    name: "libdapparamstorage_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libdapparamstorage.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libdeccfg_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libdeccfg.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libdlbdsservice",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libdlbdsservice.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefright_soft_ac4dec_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libstagefright_soft_ac4dec.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefright_soft_ddpdec_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libstagefright_soft_ddpdec.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libstagefrightdolby_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libstagefrightdolby.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.dolby.hardware.dms@2.0-impl",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.dolby.hardware.dms@2.0",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/vendor.dolby.hardware.dms@2.0.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+// 64-bit soundfx libraries
+cc_prebuilt_library_shared {
+    name: "libeffectproxy_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/soundfx/libeffectproxy.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libhwdap_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/soundfx/libhwdap.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libswdap_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/soundfx/libswdap.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libswgamedap_64",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/soundfx/libswgamedap.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "soundfx",
+    soc_specific: true,
+}
+
 cc_prebuilt_library_shared {
     name: "vendor.qti.diaghal-V1-ndk",
     owner: "xiaomi",
